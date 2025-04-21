@@ -1,6 +1,6 @@
-import { ProductData } from "../products/interfaces";
+import { IProductData } from "../products/interfaces";
 
 export interface CartCardProps {
-    item: ProductData;
+    item: IProductData;
     removeFromCart: (id: number) => void;
 }

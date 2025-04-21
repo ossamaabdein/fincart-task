@@ -1,9 +1,9 @@
 import { useMemo } from "react";
-import useCartStore from "../store/cartStore";
-import { ProductData } from "./interfaces";
 import Image from "next/image";
+import { IProductData } from "./interfaces";
+import useCartStore from "@/app/store/cartStore";
 
-const ProductCard = ({ product }: { product: ProductData }) => {
+const ProductCard = ({ product }: { product: IProductData }) => {
 
 	const { cart, addToCart, removeFromCart } = useCartStore();
 	const isInCart = useMemo(

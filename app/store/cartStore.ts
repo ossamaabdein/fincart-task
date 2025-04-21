@@ -1,9 +1,9 @@
 import { create } from "zustand";
-import { ProductData } from "../components/interfaces";
+import { IProductData } from "../components/products/interfaces";
 
 interface CartState {
-	cart: ProductData[];
-	addToCart: (item: ProductData) => void;
+	cart: IProductData[];
+	addToCart: (item: IProductData) => void;
 	removeFromCart: (id: number) => void;
 }
 
