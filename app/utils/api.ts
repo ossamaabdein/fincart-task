@@ -12,10 +12,10 @@ export const fetchCategories = async () => {
   }
 };
 
-export const fetchProducts = async (offset = 0, limit = 10, search = "", category = "") => {
+export const fetchProducts = async (offset = 0, limit = 10, title = "", categoryId = "") => {
   try {
     const response = await axios.get(`${API_BASE_URL}/products`, {
-      params: { offset, limit, search, category },
+      params: { offset, limit, title, categoryId },
     });
     return response.data;
   } catch (error) {
