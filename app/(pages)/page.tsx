@@ -96,11 +96,11 @@ export default function Home() {
 	}, [loading, totalPages, page]);
 
 	return (
-		<div className="py-10 px-24">
+		<div className="py-10 px-8 lg:px-24">
 			<h1 className="text-2xl font-bold mb-4">Products List</h1>
 			{error && !loading && <p className="text-red-500">Error: {error}</p>}
 				<div className="products-container mt-10">
-					<div className="filters mb-4 flex space-x-4">
+					<div className="filters mb-4 flex flex-col md:flex-row gap-4 space-x-4">
 						<SearchInput
 							searchQuery={searchQuery}
 							setSearchQuery={setSearchQuery}
