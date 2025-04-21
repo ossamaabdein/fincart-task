@@ -43,7 +43,8 @@ export default function Home() {
 				if (data.length === 0) {
 					setTotalPages(page);
 				} else {
-					setProducts((prev) => [...prev, ...data]);
+          let tempArr = [...products, ...data];
+					setProducts(tempArr);
 				}
 			} catch (err: any) {
 				setError(err?.response?.data?.message);
