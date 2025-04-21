@@ -7,6 +7,7 @@ import ProductsContainer from "../components/products/ProductsContainer";
 import SelectDropdown from "../components/common/SelectDropdown";
 import SearchInput from "../components/common/SearchInput";
 import { IProductCategory } from "../components/products/interfaces";
+import useSearchAndFilter from "@/components/common/useSearchAndFilter";
 
 export default function Home() {
 	const [products, setProducts] = useState<any[]>([]);
@@ -18,7 +19,6 @@ export default function Home() {
 	const [page, setPage] = useState(0);
 	const [totalPages, setTotalPages] = useState(0);
 	const observer = useRef<IntersectionObserver>(null);
-	let debounceTimeout: NodeJS.Timeout | null = null;
 
 	useEffect(() => {
 		const loadCategories = async () => {
@@ -32,25 +32,6 @@ export default function Home() {
 
 		loadCategories();
 	}, []);
-
-	const handleSearchAndFilter = (query: string, selectedCategoryId: string) => {
-		if (debounceTimeout) clearTimeout(debounceTimeout);
-    setLoading(true);
-		debounceTimeout = setTimeout(async () => {
-			try {
-				const data = await fetchProducts(0, 10, query, selectedCategoryId);
-				setProducts(data);
-			} catch (err) {
-				console.error("Error fetching products:", err);
-			} finally {
-        setLoading(false);
-      }
-		}, 300);
-	};
-
-	useEffect(() => {
-		handleSearchAndFilter(searchQuery, category?.toString() || "");
-	}, [searchQuery, category]);
 
 	useEffect(() => {
 		const loadProducts = async () => {
@@ -78,6 +59,9 @@ export default function Home() {
 
 		loadProducts();
 	}, [page]);
+
+
+  useSearchAndFilter(searchQuery, category, setProducts);
 
   const isFirstLoad = useRef(true);
 
