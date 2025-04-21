@@ -10,8 +10,8 @@ To run the project locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
-   cd <repository-folder>
+   git clone https://github.com/ossamaabdein/fincart-task.git
+   cd fincart-task
    ```
 
 2. Install dependencies:
@@ -69,16 +69,3 @@ The cart data is stored in the browser's `localStorage` to provide a seamless us
 - `components/`: Reusable UI components, including cart and product-related components.
 - `store/`: Zustand store for managing global state.
 - `utils/`: Utility functions for API integration and other reusable logic.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deployment
-
-The application can be deployed on platforms like [Vercel](https://vercel.com) for production use. Follow the [Next.js deployment guide](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
