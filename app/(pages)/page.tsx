@@ -79,9 +79,9 @@ export default function Home() {
 		loadProducts();
 	}, [page]);
 
-	useEffect(() => {
-		let isFirstLoad = true;
+  const isFirstLoad = useRef(true);
 
+	useEffect(() => {
 		const handleObserver = (entries: IntersectionObserverEntry[]) => {
 			const target = entries[0];
 			if (
@@ -89,8 +89,8 @@ export default function Home() {
 				!loading &&
 				(totalPages === 0 || page < totalPages)
 			) {
-				if (isFirstLoad) {
-					isFirstLoad = false;
+				if (isFirstLoad?.current) {
+					isFirstLoad.current = false;
 					return;
 				}
 				setPage((prev) => prev + 1);
@@ -121,13 +121,11 @@ export default function Home() {
 							searchQuery={searchQuery}
 							setSearchQuery={setSearchQuery}
               />
-            {categories?.length > 0 && (
               <SelectDropdown
               value={category}
               setValue={setCategory}
               options={categories}
               />
-            )}
 					</div>
 
             {products?.length > 0 && (
